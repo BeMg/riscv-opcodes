@@ -66,7 +66,7 @@ sh     imm12hi rs1 rs2 imm12lo 14..12=1 6..2=0x08 1..0=3
 sw     imm12hi rs1 rs2 imm12lo 14..12=2 6..2=0x08 1..0=3
 sd     imm12hi rs1 rs2 imm12lo 14..12=3 6..2=0x08 1..0=3
 
-fence       fm            pred succ     19..15=ignore 14..12=0 11..7=ignore 6..2=0x03 1..0=3
+fence       31..28=ignore pred succ     19..15=ignore 14..12=0 11..7=ignore 6..2=0x03 1..0=3
 fence.i     31..28=ignore 27..20=ignore 19..15=ignore 14..12=1 11..7=ignore 6..2=0x03 1..0=3
 
 # RV32M
@@ -241,3 +241,50 @@ fmadd.q   rd rs1 rs2 rs3 rm 26..25=3 6..2=0x10 1..0=3
 fmsub.q   rd rs1 rs2 rs3 rm 26..25=3 6..2=0x11 1..0=3
 fnmsub.q  rd rs1 rs2 rs3 rm 26..25=3 6..2=0x12 1..0=3
 fnmadd.q  rd rs1 rs2 rs3 rm 26..25=3 6..2=0x13 1..0=3
+
+
+# Vector EXTENSIONS
+
+vld rd rs1 mask imm5up 24..20=0 14..12=4 6..2=0xb 1..0=3
+vlsd rd rs1 rs2 mask imm5up 14..12=5     6..2=0xb 1..0=3
+vlxd rd rs1 rs2 mask imm5up 14..12=6     6..2=0xb 1..0=3
+
+vfld rd rs1 mask imm5up 24..20=0 14..12=5 6..2=0x1 1..0=3
+vflsd rd rs1 rs2 mask imm5up 14..12=6     6..2=0x1 1..0=3
+vflxd rd rs1 rs2 mask imm5up 14..12=7     6..2=0x1 1..0=3
+
+vsd  imm5down rs1 mask rs3 24..20=1 14..12=4 6..2=0x9 1..0=3
+vssd imm5down rs1 rs2 mask rs3 14..12=5      6..2=0x9 1..0=3 
+vsxd imm5down rs1 rs2 mask rs3 14..12=6      6..2=0x9 1..0=3
+
+vadd rd rs1 rs2 mask 31..27=1 14..12=0 6..2=0xc 1..0=3
+vsub rd rs1 rs2 mask 31..27=9 14..12=0 6..2=0xc 1..0=3
+vsll rd rs1 rs2 mask 31..27=1 14..12=1 6..2=0xc 1..0=3
+vxor rd rs1 rs2 mask 31..27=1 14..12=4 6..2=0xc 1..0=3
+vsrl rd rs1 rs2 mask 31..27=1 14..12=5 6..2=0xc 1..0=3
+vsra rd rs1 rs2 mask 31..27=9 14..12=5 6..2=0xc 1..0=3
+vor  rd rs1 rs2 mask 31..27=1 14..12=6 6..2=0xc 1..0=3
+vand rd rs1 rs2 mask 31..27=1 14..12=7 6..2=0xc 1..0=3
+vmul rd rs1 rs2 mask 31..27=2 14..12=0 6..2=0xc 1..0=3
+vdiv rd rs1 rs2 mask 31..27=2 14..12=4 6..2=0xc 1..0=3
+vseq rd rs1 rs2 mask 31..27=3 14..12=0 6..2=0xc 1..0=3
+vslt rd rs1 rs2 mask 31..27=3 14..12=1 6..2=0xc 1..0=3
+vsltu rd rs1 rs2 mask 31..27=3 14..12=2 6..2=0xc 1..0=3
+
+vfadd.s rd rm rs1 rs2 mask 31..27=16 6..2=14 1..0=3
+vfsub.s rd rm rs1 rs2 mask 31..27=17 6..2=14 1..0=3
+vfmul.s rd rm rs1 rs2 mask 31..27=18 6..2=14 1..0=3
+vfdiv.s rd rm rs1 rs2 mask 31..27=19 6..2=14 1..0=3
+vfmin.s rd rs1 rs2 mask 31..27=24 14..12=0 6..2=14 1..0=3
+vfmax.s rd rs1 rs2 mask 31..27=25 14..12=1 6..2=14 1..0=3
+vfle.s  rd rs1 rs2 mask 31..27=20 14..12=0 6..2=14 1..0=3
+vflt.s  rd rs1 rs2 mask 31..27=20 14..12=1 6..2=14 1..0=3
+vfeq.s  rd rs1 rs2 mask 31..27=20 14..12=2 6..2=14 1..0=3
+vfsqrt.s rd rm rs1 rs2 mask 31..27=27 6..2=14 1..0=3
+
+vins  rd rs1 rs2 31..25=0 14..12=0 6..2=2 1..0=3
+vfins rd rs1 rs2 31..25=0 14..12=1 6..2=2 1..0=3
+vext  rd rs1 rs2 31..25=0 14..12=2 6..2=2 1..0=3
+vfext rd rs1 rs2 31..25=0 14..12=3 6..2=2 1..0=3
+vconfig imm12 19..15=0 14..12=4 11..7=0 6..2=2 1..0=3
+vsetvl rd rs1 31..20=0 14..12=5    6..2=2 1..0=3
