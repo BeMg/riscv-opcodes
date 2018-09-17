@@ -374,7 +374,7 @@ smul16  rd rs1 rs2 31..25=39 14..12=0 6..2=0xa 1..0=3
 smulx16 rd rs1 rs2 31..25=40 14..12=0 6..2=0xa 1..0=3
 umul16  rd rs1 rs2 31..25=41 14..12=0 6..2=0xa 1..0=3
 umulx16 rd rs1 rs2 31..25=42 14..12=0 6..2=0xa 1..0=3
-kabs16  rd rs1     31..25=42 24..20=0 14..12=0 6..2=0xa 1..0=3
+kabs16  rd rs1     31..25=43 24..20=0 14..12=0 6..2=0xa 1..0=3
 
 ## 8-bits Misc Instruction
 
@@ -410,3 +410,77 @@ ksll     rd rs1 rs2  31..25=5 14..12=2 6..2=0xa 1..0=3
 kslli    rd rs1 imm5 31..25=9 14..12=4 6..2=0xa 1..0=3
 kslraw.u rd rs1 rs2  31..25=6 14..12=2 6..2=0xa 1..0=3
 
+## 16-bit Packing Instruction
+
+pkbb16 rd rs1 rs2 31..25=44 14..12=0 6..2=0xa 1..0=3
+pkbt16 rd rs1 rs2 31..25=45 14..12=0 6..2=0xa 1..0=3
+pktb16 rd rs1 rs2 31..25=46 14..12=0 6..2=0xa 1..0=3
+pktt16 rd rs1 rs2 31..25=47 14..12=0 6..2=0xa 1..0=3
+
+## Most Significant word "32x32" Multply and Add
+
+smmul     rd rs1 rs2  31..25=7 14..12=2 6..2=0xa 1..0=3
+smmul.u   rd rs1 rs2  31..25=8 14..12=2 6..2=0xa 1..0=3
+kmmac     rd rs1 rs2  31..25=9 14..12=2 6..2=0xa 1..0=3
+kmmac.u   rd rs1 rs2  31..25=10 14..12=2 6..2=0xa 1..0=3
+kmmsb     rd rs1 rs2  31..25=11 14..12=2 6..2=0xa 1..0=3
+kmmsb.u   rd rs1 rs2  31..25=12 14..12=2 6..2=0xa 1..0=3
+kwmmul    rd rs1 rs2  31..25=13 14..12=2 6..2=0xa 1..0=3
+kwmmul.u  rd rs1 rs2  31..25=14 14..12=2 6..2=0xa 1..0=3
+
+## Most Significant word "32x16" Multply and Add 
+
+smmwb    rd rs1 rs2  31..25=15 14..12=2 6..2=0xa 1..0=3
+smmwb.u  rd rs1 rs2  31..25=16 14..12=2 6..2=0xa 1..0=3
+smmwt    rd rs1 rs2  31..25=17 14..12=2 6..2=0xa 1..0=3
+smmwt.u  rd rs1 rs2  31..25=18 14..12=2 6..2=0xa 1..0=3
+kmmawb   rd rs1 rs2  31..25=19 14..12=2 6..2=0xa 1..0=3
+kmmawb.u rd rs1 rs2  31..25=20 14..12=2 6..2=0xa 1..0=3
+kmmawt   rd rs1 rs2  31..25=21 14..12=2 6..2=0xa 1..0=3
+kmmawt.u rd rs1 rs2  31..25=22 14..12=2 6..2=0xa 1..0=3
+
+## Signed 16-bit Mul with 32-bit add/sub
+
+smbb   rd rs1 rs2  31..25=23 14..12=2 6..2=0xa 1..0=3
+smbt   rd rs1 rs2  31..25=24 14..12=2 6..2=0xa 1..0=3
+smtt   rd rs1 rs2  31..25=25 14..12=2 6..2=0xa 1..0=3
+kmda   rd rs1 rs2  31..25=26 14..12=2 6..2=0xa 1..0=3
+kmxda  rd rs1 rs2  31..25=27 14..12=2 6..2=0xa 1..0=3
+smds   rd rs1 rs2  31..25=28 14..12=2 6..2=0xa 1..0=3
+smdrs  rd rs1 rs2  31..25=29 14..12=2 6..2=0xa 1..0=3
+smxds  rd rs1 rs2  31..25=30 14..12=2 6..2=0xa 1..0=3
+kmabb  rd rs1 rs2  31..25=31 14..12=2 6..2=0xa 1..0=3
+kmabt  rd rs1 rs2  31..25=32 14..12=2 6..2=0xa 1..0=3
+kmatt  rd rs1 rs2  31..25=33 14..12=2 6..2=0xa 1..0=3
+kmada  rd rs1 rs2  31..25=34 14..12=2 6..2=0xa 1..0=3
+kmaxda rd rs1 rs2  31..25=35 14..12=2 6..2=0xa 1..0=3
+kmads  rd rs1 rs2  31..25=36 14..12=2 6..2=0xa 1..0=3
+kmadrs rd rs1 rs2  31..25=37 14..12=2 6..2=0xa 1..0=3
+kmaxds rd rs1 rs2  31..25=38 14..12=2 6..2=0xa 1..0=3
+kmsda  rd rs1 rs2  31..25=39 14..12=2 6..2=0xa 1..0=3
+kmsxda rd rs1 rs2  31..25=40 14..12=2 6..2=0xa 1..0=3
+
+## Signed 16-bit Mul with 64-bit add/sub
+
+smal rd rs1 rs2  31..25=41 14..12=2 6..2=0xa 1..0=3
+
+## Miscellaneous Instruction
+
+sclip32 rd rs1 imm5  31..25=10 14..12=4 6..2=0xa 1..0=3
+uclip32 rd rs1 imm5  31..25=11 14..12=4 6..2=0xa 1..0=3
+bitrev  rd rs1 rs2   31..25=42 14..12=2 6..2=0xa 1..0=3
+bitrevi rd rs1 imm5  31..25=12 14..12=4 6..2=0xa 1..0=3
+wext    rd rs1 rs2   31..25=43 14..12=2 6..2=0xa 1..0=3
+wexti   rd rs1 imm5  31..25=13 14..12=4 6..2=0xa 1..0=3
+# bpick   
+insb    rd rs1 imm5  31..25=14 14..12=4 6..2=0xa 1..0=3
+kabs    rd rs1 rs2   31..25=44 14..12=2 6..2=0xa 1..0=3
+# uclip32 rd rs1 imm5  31..25=15 14..12=4 6..2=0xa 1..0=3
+# sclip32 rd rs1 imm5 31..25=16 14..12=4 6..2=0xa 1..0=3
+clz     rd rs1  31..25=45 24..20=0 14..12=2 6..2=0xa 1..0=3
+clo     rd rs1  31..25=46 24..20=0 14..12=2 6..2=0xa 1..0=3
+max     rd rs1 rs2  31..25=47 14..12=2 6..2=0xa 1..0=3
+min     rd rs1 rs2  31..25=48 14..12=2 6..2=0xa 1..0=3
+ave     rd rs1 rs2  31..25=49 14..12=2 6..2=0xa 1..0=3
+pbsad   rd rs1 rs2  31..25=50 14..12=2 6..2=0xa 1..0=3
+pbsada  rd rs1 rs2  31..25=51 14..12=2 6..2=0xa 1..0=3
