@@ -288,3 +288,125 @@ vext  rd rs1 rs2 31..25=0 14..12=2 6..2=2 1..0=3
 vfext rd rs1 rs2 31..25=0 14..12=3 6..2=2 1..0=3
 vconfig imm12 19..15=0 14..12=4 11..7=0 6..2=2 1..0=3
 vsetvl rd rs1 31..20=0 14..12=5    6..2=2 1..0=3
+
+# P vector SIMD extension (Proposal by andes)
+
+## 16-bits Addition and Subtraction 
+
+add16      rd rs1 rs2 31..25=0 14..12=0 6..2=0xa 1..0=3
+radd16     rd rs1 rs2 31..25=1 14..12=0 6..2=0xa 1..0=3
+uradd16    rd rs1 rs2 31..25=2 14..12=0 6..2=0xa 1..0=3
+kadd16     rd rs1 rs2 31..25=3 14..12=0 6..2=0xa 1..0=3
+ukadd16    rd rs1 rs2 31..25=4 14..12=0 6..2=0xa 1..0=3
+sub16      rd rs1 rs2 31..25=5 14..12=0 6..2=0xa 1..0=3
+rsub16     rd rs1 rs2 31..25=6 14..12=0 6..2=0xa 1..0=3
+ursub16    rd rs1 rs2 31..25=7 14..12=0 6..2=0xa 1..0=3
+ksub16     rd rs1 rs2 31..25=8 14..12=0 6..2=0xa 1..0=3
+uksub16    rd rs1 rs2 31..25=9 14..12=0 6..2=0xa 1..0=3
+cras16     rd rs1 rs2 31..25=10 14..12=0 6..2=0xa 1..0=3
+rcras16    rd rs1 rs2 31..25=11 14..12=0 6..2=0xa 1..0=3
+urcras16   rd rs1 rs2 31..25=12 14..12=0 6..2=0xa 1..0=3
+kcras16    rd rs1 rs2 31..25=13 14..12=0 6..2=0xa 1..0=3
+ukcras16   rd rs1 rs2 31..25=14 14..12=0 6..2=0xa 1..0=3
+crsa16     rd rs1 rs2 31..25=15 14..12=0 6..2=0xa 1..0=3
+rcrsa16    rd rs1 rs2 31..25=16 14..12=0 6..2=0xa 1..0=3
+urcrsa16   rd rs1 rs2 31..25=17 14..12=0 6..2=0xa 1..0=3
+kcrsa16    rd rs1 rs2 31..25=18 14..12=0 6..2=0xa 1..0=3
+ukcrsa16   rd rs1 rs2 31..25=19 14..12=0 6..2=0xa 1..0=3
+
+## 8-bits Addition and Subtraction
+
+add8     rd rs1 rs2 31..25=0 14..12=1 6..2=0xa 1..0=3
+radd8    rd rs1 rs2 31..25=1 14..12=1 6..2=0xa 1..0=3
+uradd8   rd rs1 rs2 31..25=2 14..12=1 6..2=0xa 1..0=3
+kadd8    rd rs1 rs2 31..25=3 14..12=1 6..2=0xa 1..0=3
+ukadd8   rd rs1 rs2 31..25=4 14..12=1 6..2=0xa 1..0=3
+sub8     rd rs1 rs2 31..25=5 14..12=1 6..2=0xa 1..0=3
+rsub8    rd rs1 rs2 31..25=6 14..12=1 6..2=0xa 1..0=3
+ursub8   rd rs1 rs2 31..25=7 14..12=1 6..2=0xa 1..0=3
+ksub8    rd rs1 rs2 31..25=8 14..12=1 6..2=0xa 1..0=3
+uksub8   rd rs1 rs2 31..25=9 14..12=1 6..2=0xa 1..0=3
+
+## 16-bits Shift instruction
+
+sra16     rd rs1 rs2 31..25=20 14..12=0 6..2=0xa 1..0=3
+srai16    rd rs1 imm5 31..25=0 14..12=4 6..2=0xa 1..0=3
+sra16.u   rd rs1 rs2 31..25=21 14..12=0 6..2=0xa 1..0=3
+srai16.u  rd rs1 imm5 31..25=1 14..12=4 6..2=0xa 1..0=3
+srl16     rd rs1 rs2 31..25=22 14..12=0 6..2=0xa 1..0=3
+srli16    rd rs1 imm5 31..25=2 14..12=4 6..2=0xa 1..0=3
+srl16.u   rd rs1 rs2 31..25=23 14..12=0 6..2=0xa 1..0=3
+srli16.u  rd rs1 imm5 31..25=3 14..12=4 6..2=0xa 1..0=3
+sll16     rd rs1 rs2 31..25=24 14..12=0 6..2=0xa 1..0=3
+slli16    rd rs1 imm5 31..25=4 14..12=4 6..2=0xa 1..0=3
+ksll16    rd rs1 rs2 31..25=25 14..12=0 6..2=0xa 1..0=3
+kslli16   rd rs1 imm5 31..25=5 14..12=4 6..2=0xa 1..0=3
+kslra16   rd rs1 rs2 31..25=26 14..12=0 6..2=0xa 1..0=3
+kslra16.u rd rs1 rs2 31..25=27 14..12=0 6..2=0xa 1..0=3
+
+## 16-bits Compare Instruction
+
+cmpeq16  rd rs1 rs2 31..25=28 14..12=0 6..2=0xa 1..0=3
+scmplt16 rd rs1 rs2 31..25=29 14..12=0 6..2=0xa 1..0=3
+scmple16 rd rs1 rs2 31..25=30 14..12=0 6..2=0xa 1..0=3
+ucmplt16 rd rs1 rs2 31..25=31 14..12=0 6..2=0xa 1..0=3
+ucmple16 rd rs1 rs2 31..25=32 14..12=0 6..2=0xa 1..0=3
+
+## 8-bits Compare Instruction
+
+cmpeq8  rd rs1 rs2 31..25=10 14..12=1 6..2=0xa 1..0=3
+scmplt8 rd rs1 rs2 31..25=11 14..12=1 6..2=0xa 1..0=3
+scmple8 rd rs1 rs2 31..25=12 14..12=1 6..2=0xa 1..0=3
+ucmplt8 rd rs1 rs2 31..25=13 14..12=1 6..2=0xa 1..0=3
+ucmple8 rd rs1 rs2 31..25=14 14..12=1 6..2=0xa 1..0=3
+
+## 16-bits Misc Instruction
+
+smin16  rd rs1 rs2 31..25=33 14..12=0 6..2=0xa 1..0=3
+umin16  rd rs1 rs2 31..25=34 14..12=0 6..2=0xa 1..0=3
+smax16  rd rs1 rs2 31..25=35 14..12=0 6..2=0xa 1..0=3
+umax16  rd rs1 rs2 31..25=36 14..12=0 6..2=0xa 1..0=3
+sclip16 rd rs1 imm5 31..25=6  14..12=4 6..2=0xa 1..0=3
+uclip16 rd rs1 imm5 31..25=7  14..12=4 6..2=0xa 1..0=3
+khm16   rd rs1 rs2 31..25=37 14..12=0 6..2=0xa 1..0=3
+khmx16  rd rs1 rs2 31..25=38 14..12=0 6..2=0xa 1..0=3
+smul16  rd rs1 rs2 31..25=39 14..12=0 6..2=0xa 1..0=3
+smulx16 rd rs1 rs2 31..25=40 14..12=0 6..2=0xa 1..0=3
+umul16  rd rs1 rs2 31..25=41 14..12=0 6..2=0xa 1..0=3
+umulx16 rd rs1 rs2 31..25=42 14..12=0 6..2=0xa 1..0=3
+kabs16  rd rs1     31..25=42 24..20=0 14..12=0 6..2=0xa 1..0=3
+
+## 8-bits Misc Instruction
+
+smin8 rd rs1 rs2 31..25=15 14..12=1 6..2=0xa 1..0=3
+umin8 rd rs1 rs2 31..25=16 14..12=1 6..2=0xa 1..0=3
+smax8 rd rs1 rs2 31..25=17 14..12=1 6..2=0xa 1..0=3
+umax8 rd rs1 rs2 31..25=18 14..12=1 6..2=0xa 1..0=3
+kabs8 rd rs1 31..25=19 24..20=0 14..12=1 6..2=0xa 1..0=3
+
+## 8-bits Unpacking Instruction	
+
+sunpkd810 rd rs1 31..25=20 24..20=0 14..12=1 6..2=0xa 1..0=3
+sunpkd820 rd rs1 31..25=21 24..20=0 14..12=1 6..2=0xa 1..0=3
+sunpkd830 rd rs1 31..25=22 24..20=0 14..12=1 6..2=0xa 1..0=3
+sunpkd831 rd rs1 31..25=23 24..20=0 14..12=1 6..2=0xa 1..0=3
+zunpkd810 rd rs1 31..25=24 24..20=0 14..12=1 6..2=0xa 1..0=3
+zunpkd820 rd rs1 31..25=25 24..20=0 14..12=1 6..2=0xa 1..0=3
+zunpkd830 rd rs1 31..25=26 24..20=0 14..12=1 6..2=0xa 1..0=3
+zunpkd831 rd rs1 31..25=27 24..20=0 14..12=1 6..2=0xa 1..0=3
+
+## 32-bit Addition Subtraction
+
+raddw  rd rs1 rs2 31..25=0 14..12=2 6..2=0xa 1..0=3
+uraddw rd rs1 rs2 31..25=1 14..12=2 6..2=0xa 1..0=3
+rsubw  rd rs1 rs2 31..25=2 14..12=2 6..2=0xa 1..0=3
+ursubw rd rs1 rs2 31..25=3 14..12=2 6..2=0xa 1..0=3
+
+## 32-bit Shift instruction	
+
+sra.u    rd rs1 rs2  31..25=4 14..12=2 6..2=0xa 1..0=3
+srai.u   rd rs1 imm5 31..25=8 14..12=4 6..2=0xa 1..0=3
+ksll     rd rs1 rs2  31..25=5 14..12=2 6..2=0xa 1..0=3
+kslli    rd rs1 imm5 31..25=9 14..12=4 6..2=0xa 1..0=3
+kslraw.u rd rs1 rs2  31..25=6 14..12=2 6..2=0xa 1..0=3
+
