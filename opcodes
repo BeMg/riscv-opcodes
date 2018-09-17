@@ -484,3 +484,69 @@ min     rd rs1 rs2  31..25=48 14..12=2 6..2=0xa 1..0=3
 ave     rd rs1 rs2  31..25=49 14..12=2 6..2=0xa 1..0=3
 pbsad   rd rs1 rs2  31..25=50 14..12=2 6..2=0xa 1..0=3
 pbsada  rd rs1 rs2  31..25=51 14..12=2 6..2=0xa 1..0=3
+
+## Q31 saturation Instruction
+
+kaddw  rd rs1 rs2  31..25=52 14..12=2 6..2=0xa 1..0=3
+ksubw  rd rs1 rs2  31..25=53 14..12=2 6..2=0xa 1..0=3
+kslraw rd rs1 rs2  31..25=54 14..12=2 6..2=0xa 1..0=3
+kdmbb  rd rs1 rs2  31..25=55 14..12=2 6..2=0xa 1..0=3
+kdmtb  rd rs1 rs2  31..25=56 14..12=2 6..2=0xa 1..0=3
+kdmbt  rd rs1 rs2  31..25=57 14..12=2 6..2=0xa 1..0=3
+kdmtt  rd rs1 rs2  31..25=58 14..12=2 6..2=0xa 1..0=3
+
+## Q15 saturation Instruction
+
+kaddh rd rs1 rs2  31..25=59 14..12=2 6..2=0xa 1..0=3
+ksubh rd rs1 rs2  31..25=60 14..12=2 6..2=0xa 1..0=3
+khmbb rd rs1 rs2  31..25=61 14..12=2 6..2=0xa 1..0=3
+khmtb rd rs1 rs2  31..25=62 14..12=2 6..2=0xa 1..0=3
+khmbt rd rs1 rs2  31..25=63 14..12=2 6..2=0xa 1..0=3
+khmtt rd rs1 rs2  31..25=64 14..12=2 6..2=0xa 1..0=3
+
+## Q15 saturation instruction
+
+rdov  rd   31..25=65 24..15=0 14..12=2 6..2=0xa 1..0=3
+clrov      31..25=66 24..15=0 14..12=2 11..7=0 6..2=0xa 1..0=3
+
+## 64-bit add/sub
+
+add64   rd rs1 rs2  31..25=0 14..12=3 6..2=0xa 1..0=3
+radd64  rd rs1 rs2  31..25=1 14..12=3 6..2=0xa 1..0=3
+uradd64 rd rs1 rs2  31..25=2 14..12=3 6..2=0xa 1..0=3
+kadd64  rd rs1 rs2  31..25=3 14..12=3 6..2=0xa 1..0=3
+ukadd64 rd rs1 rs2  31..25=4 14..12=3 6..2=0xa 1..0=3
+sub64   rd rs1 rs2  31..25=5 14..12=3 6..2=0xa 1..0=3
+rsub64  rd rs1 rs2  31..25=6 14..12=3 6..2=0xa 1..0=3
+ursub64 rd rs1 rs2  31..25=7 14..12=3 6..2=0xa 1..0=3
+ksub64  rd rs1 rs2  31..25=8 14..12=3 6..2=0xa 1..0=3
+uksub64 rd rs1 rs2  31..25=9 14..12=3 6..2=0xa 1..0=3
+
+## 32-bit Mul with 64-bit add/sub
+
+smar64  rd rs1 rs2  31..25=10 14..12=3 6..2=0xa 1..0=3
+smsr64  rd rs1 rs2  31..25=11 14..12=3 6..2=0xa 1..0=3
+umar64  rd rs1 rs2  31..25=12 14..12=3 6..2=0xa 1..0=3
+umsr64  rd rs1 rs2  31..25=13 14..12=3 6..2=0xa 1..0=3
+kmar64  rd rs1 rs2  31..25=14 14..12=3 6..2=0xa 1..0=3
+kmsr64  rd rs1 rs2  31..25=15 14..12=3 6..2=0xa 1..0=3
+ukmar64 rd rs1 rs2  31..25=16 14..12=3 6..2=0xa 1..0=3
+ukmsr64 rd rs1 rs2  31..25=17 14..12=3 6..2=0xa 1..0=3
+
+## Signed 16-bit Mul with 64-bit add/sub
+
+smalbb  rd rs1 rs2  31..25=18 14..12=3 6..2=0xa 1..0=3
+smalbt  rd rs1 rs2  31..25=19 14..12=3 6..2=0xa 1..0=3
+smaltt  rd rs1 rs2  31..25=20 14..12=3 6..2=0xa 1..0=3
+smalda  rd rs1 rs2  31..25=21 14..12=3 6..2=0xa 1..0=3
+smalxda rd rs1 rs2  31..25=22 14..12=3 6..2=0xa 1..0=3
+smalds  rd rs1 rs2  31..25=23 14..12=3 6..2=0xa 1..0=3
+smaldrs rd rs1 rs2  31..25=24 14..12=3 6..2=0xa 1..0=3
+smalxds rd rs1 rs2  31..25=25 14..12=3 6..2=0xa 1..0=3
+smslda  rd rs1 rs2  31..25=26 14..12=3 6..2=0xa 1..0=3
+smslxda rd rs1 rs2  31..25=27 14..12=3 6..2=0xa 1..0=3
+
+## Zero-overhead loop Mechanism Instruction	
+
+mtlbi imm16 31=0 14..12=5 6..2=0xa 1..0=3
+mtlei imm16 31=1 14..12=5 6..2=0xa 1..0=3
