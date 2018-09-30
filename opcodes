@@ -548,5 +548,5 @@ smslxda rd rs1 rs2  31..25=27 14..12=3 6..2=0xa 1..0=3
 
 ## Zero-overhead loop Mechanism Instruction	
 
-mtlbi imm16 31=0 14..12=5 6..2=0xa 1..0=3
-mtlei imm16 31=1 14..12=5 6..2=0xa 1..0=3
+mtlbi imm16 31=0 14..12=5 11..7=0 6..2=0xa 1..0=3
+mtlei imm16 31=1 14..12=5 11..7=0 6..2=0xa 1..0=3
