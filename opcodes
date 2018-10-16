@@ -245,49 +245,101 @@ fnmadd.q  rd rs1 rs2 rs3 rm 26..25=3 6..2=0x13 1..0=3
 
 # Vector EXTENSIONS
 
-vld rd rs1 mask imm5up 24..20=0 14..12=4 6..2=0xb 1..0=3
-vlsd rd rs1 rs2 mask imm5up 14..12=5     6..2=0xb 1..0=3
-vlxd rd rs1 rs2 mask imm5up 14..12=6     6..2=0xb 1..0=3
+vld rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=7 6..2=1 1..0=3
+vsd imm3st rs1 maskls rs3 24..20=0 14..12=7 8..7=0 6..2=9 1..0=3 
 
-vfld rd rs1 mask imm5up 24..20=0 14..12=5 6..2=0x1 1..0=3
-vflsd rd rs1 rs2 mask imm5up 14..12=6     6..2=0x1 1..0=3
-vflxd rd rs1 rs2 mask imm5up 14..12=7     6..2=0x1 1..0=3
+vadd rd mask rs1 rs2 31..25=0x40 14=1 6..2=0x15 1..0=3  
+vsub rd mask rs1 rs2 31..25=0x41 14=1 6..2=0x15 1..0=3 
+vsl  rd mask rs1 rs2 31..25=0x48 14=1 6..2=0x15 1..0=3 
+vsr  rd mask rs1 rs2 31..25=0x49 14=1 6..2=0x15 1..0=3 
+vand rd mask rs1 rs2 31..25=0x4b 14=1 6..2=0x15 1..0=3 
+vor  rd mask rs1 rs2 31..25=0x4a 14=1 6..2=0x15 1..0=3 
+vxor rd mask rs1 rs2 31..25=0x60 14=1 6..2=0x15 1..0=3 
+vseq rd mask rs1 rs2 31..25=0x4c 14=1 6..2=0x15 1..0=3 
+vsne rd mask rs1 rs2 31..25=0x4d 14=1 6..2=0x15 1..0=3 
+vslt rd mask rs1 rs2 31..25=0x4e 14=1 6..2=0x15 1..0=3 
+vsge rd mask rs1 rs2 31..25=0x4f 14=1 6..2=0x15 1..0=3 
+vdiv rd mask rs1 rs2 31..25=0x42 14=1 6..2=0x15 1..0=3 
+vmul rd mask rs1 rs2 31..25=0x44 14=1 6..2=0x15 1..0=3 
 
-vsd  imm5down rs1 mask rs3 24..20=1 14..12=4 6..2=0x9 1..0=3
-vssd imm5down rs1 rs2 mask rs3 14..12=5      6..2=0x9 1..0=3 
-vsxd imm5down rs1 rs2 mask rs3 14..12=6      6..2=0x9 1..0=3
+vfadd.s  rd mask rs1 rs2 31..25=0x0  14=0 6..2=0x15 1..0=3
+vfsub.s  rd mask rs1 rs2 31..25=0x4  14=0 6..2=0x15 1..0=3
+vfmul.s  rd mask rs1 rs2 31..25=0x8  14=0 6..2=0x15 1..0=3
+vfdiv.s  rd mask rs1 rs2 31..25=0xc  14=0 6..2=0x15 1..0=3
+vfmin.s  rd mask rs1 rs2 31..25=0x1c 14=0 6..2=0x15 1..0=3
+vfmax.s  rd mask rs1 rs2 31..25=0x20 14=0 6..2=0x15 1..0=3
+vfeq.s   rd mask rs1 rs2 31..25=0x30 14=0 6..2=0x15 1..0=3
+vflt.s   rd mask rs1 rs2 31..25=0x2c 14=0 6..2=0x15 1..0=3
+vfle.s   rd mask rs1 rs2 31..25=0x28 14=0 6..2=0x15 1..0=3
 
-vadd rd rs1 rs2 mask 31..27=1 14..12=0 6..2=0xc 1..0=3
-vsub rd rs1 rs2 mask 31..27=9 14..12=0 6..2=0xc 1..0=3
-vsll rd rs1 rs2 mask 31..27=1 14..12=1 6..2=0xc 1..0=3
-vxor rd rs1 rs2 mask 31..27=1 14..12=4 6..2=0xc 1..0=3
-vsrl rd rs1 rs2 mask 31..27=1 14..12=5 6..2=0xc 1..0=3
-vsra rd rs1 rs2 mask 31..27=9 14..12=5 6..2=0xc 1..0=3
-vor  rd rs1 rs2 mask 31..27=1 14..12=6 6..2=0xc 1..0=3
-vand rd rs1 rs2 mask 31..27=1 14..12=7 6..2=0xc 1..0=3
-vmul rd rs1 rs2 mask 31..27=2 14..12=0 6..2=0xc 1..0=3
-vdiv rd rs1 rs2 mask 31..27=2 14..12=4 6..2=0xc 1..0=3
-vseq rd rs1 rs2 mask 31..27=3 14..12=0 6..2=0xc 1..0=3
-vslt rd rs1 rs2 mask 31..27=3 14..12=1 6..2=0xc 1..0=3
-vsltu rd rs1 rs2 mask 31..27=3 14..12=2 6..2=0xc 1..0=3
+vfadd.d  rd mask rs1 rs2 31..25=0x1  14=0 6..2=0x15 1..0=3
+vfsub.d  rd mask rs1 rs2 31..25=0x5  14=0 6..2=0x15 1..0=3
+vfmul.d  rd mask rs1 rs2 31..25=0x9  14=0 6..2=0x15 1..0=3
+vfdiv.d  rd mask rs1 rs2 31..25=0xd  14=0 6..2=0x15 1..0=3
+vfmin.d  rd mask rs1 rs2 31..25=0x1d 14=0 6..2=0x15 1..0=3
+vfmax.d  rd mask rs1 rs2 31..25=0x21 14=0 6..2=0x15 1..0=3
+vfeq.d   rd mask rs1 rs2 31..25=0x31 14=0 6..2=0x15 1..0=3
+vflt.d   rd mask rs1 rs2 31..25=0x2d 14=0 6..2=0x15 1..0=3
+vfle.d   rd mask rs1 rs2 31..25=0x29 14=0 6..2=0x15 1..0=3
 
-vfadd.s rd rm rs1 rs2 mask 31..27=16 6..2=14 1..0=3
-vfsub.s rd rm rs1 rs2 mask 31..27=17 6..2=14 1..0=3
-vfmul.s rd rm rs1 rs2 mask 31..27=18 6..2=14 1..0=3
-vfdiv.s rd rm rs1 rs2 mask 31..27=19 6..2=14 1..0=3
-vfmin.s rd rs1 rs2 mask 31..27=24 14..12=0 6..2=14 1..0=3
-vfmax.s rd rs1 rs2 mask 31..27=25 14..12=1 6..2=14 1..0=3
-vfle.s  rd rs1 rs2 mask 31..27=20 14..12=0 6..2=14 1..0=3
-vflt.s  rd rs1 rs2 mask 31..27=20 14..12=1 6..2=14 1..0=3
-vfeq.s  rd rs1 rs2 mask 31..27=20 14..12=2 6..2=14 1..0=3
-vfsqrt.s rd rm rs1 rs2 mask 31..27=27 6..2=14 1..0=3
+vfadd.h  rd mask rs1 rs2 31..25=0x2  14=0 6..2=0x15 1..0=3
+vfsub.h  rd mask rs1 rs2 31..25=0x6  14=0 6..2=0x15 1..0=3
+vfmul.h  rd mask rs1 rs2 31..25=0xa  14=0 6..2=0x15 1..0=3
+vfdiv.h  rd mask rs1 rs2 31..25=0xe  14=0 6..2=0x15 1..0=3
+vfmin.h  rd mask rs1 rs2 31..25=0x1e 14=0 6..2=0x15 1..0=3
+vfmax.h  rd mask rs1 rs2 31..25=0x22 14=0 6..2=0x15 1..0=3
+vfeq.h   rd mask rs1 rs2 31..25=0x32 14=0 6..2=0x15 1..0=3
+vflt.h   rd mask rs1 rs2 31..25=0x2e 14=0 6..2=0x15 1..0=3
+vfle.h   rd mask rs1 rs2 31..25=0x2a 14=0 6..2=0x15 1..0=3
 
-vins  rd rs1 rs2 31..25=0 14..12=0 6..2=2 1..0=3
-vfins rd rs1 rs2 31..25=0 14..12=1 6..2=2 1..0=3
-vext  rd rs1 rs2 31..25=0 14..12=2 6..2=2 1..0=3
-vfext rd rs1 rs2 31..25=0 14..12=3 6..2=2 1..0=3
+vfsqrt.s rd mask rs1 31..25=0x24 24..20=0 14=0 6..2=0x15 1..0=3
+vfsqrt.d rd mask rs1 31..25=0x25 24..20=0 14=0 6..2=0x15 1..0=3
+vfsqrt.h rd mask rs1 31..25=0x26 24..20=0 14=0 6..2=0x15 1..0=3
+
 vconfig imm12 19..15=0 14..12=4 11..7=0 6..2=2 1..0=3
 vsetvl rd rs1 31..20=0 14..12=5    6..2=2 1..0=3
+
+# vld rd rs1 mask imm5up 24..20=0 14..12=4 6..2=0xb 1..0=3
+# vlsd rd rs1 rs2 mask imm5up 14..12=5     6..2=0xb 1..0=3
+# vlxd rd rs1 rs2 mask imm5up 14..12=6     6..2=0xb 1..0=3
+# 
+# vfld rd rs1 mask imm5up 24..20=0 14..12=5 6..2=0x1 1..0=3
+# vflsd rd rs1 rs2 mask imm5up 14..12=6     6..2=0x1 1..0=3
+# vflxd rd rs1 rs2 mask imm5up 14..12=7     6..2=0x1 1..0=3
+# 
+# vsd  imm5down rs1 mask rs3 24..20=1 14..12=4 6..2=0x9 1..0=3
+# vssd imm5down rs1 rs2 mask rs3 14..12=5      6..2=0x9 1..0=3 
+# vsxd imm5down rs1 rs2 mask rs3 14..12=6      6..2=0x9 1..0=3
+# 
+# vadd rd rs1 rs2 mask 31..27=1 14..12=0 6..2=0xc 1..0=3
+# vsub rd rs1 rs2 mask 31..27=9 14..12=0 6..2=0xc 1..0=3
+# vsll rd rs1 rs2 mask 31..27=1 14..12=1 6..2=0xc 1..0=3
+# vxor rd rs1 rs2 mask 31..27=1 14..12=4 6..2=0xc 1..0=3
+# vsrl rd rs1 rs2 mask 31..27=1 14..12=5 6..2=0xc 1..0=3
+# vsra rd rs1 rs2 mask 31..27=9 14..12=5 6..2=0xc 1..0=3
+# vor  rd rs1 rs2 mask 31..27=1 14..12=6 6..2=0xc 1..0=3
+# vand rd rs1 rs2 mask 31..27=1 14..12=7 6..2=0xc 1..0=3
+# vmul rd rs1 rs2 mask 31..27=2 14..12=0 6..2=0xc 1..0=3
+# vdiv rd rs1 rs2 mask 31..27=2 14..12=4 6..2=0xc 1..0=3
+# vseq rd rs1 rs2 mask 31..27=3 14..12=0 6..2=0xc 1..0=3
+# vslt rd rs1 rs2 mask 31..27=3 14..12=1 6..2=0xc 1..0=3
+# vsltu rd rs1 rs2 mask 31..27=3 14..12=2 6..2=0xc 1..0=3
+
+# vfadd.s rd rm rs1 rs2 mask 31..27=16 6..2=14 1..0=3
+# vfsub.s rd rm rs1 rs2 mask 31..27=17 6..2=14 1..0=3
+# vfmul.s rd rm rs1 rs2 mask 31..27=18 6..2=14 1..0=3
+# vfdiv.s rd rm rs1 rs2 mask 31..27=19 6..2=14 1..0=3
+# vfmin.s rd rs1 rs2 mask 31..27=24 14..12=0 6..2=14 1..0=3
+# vfmax.s rd rs1 rs2 mask 31..27=25 14..12=1 6..2=14 1..0=3
+# vfle.s  rd rs1 rs2 mask 31..27=20 14..12=0 6..2=14 1..0=3
+# vflt.s  rd rs1 rs2 mask 31..27=20 14..12=1 6..2=14 1..0=3
+# vfeq.s  rd rs1 rs2 mask 31..27=20 14..12=2 6..2=14 1..0=3
+# vfsqrt.s rd rm rs1 rs2 mask 31..27=27 6..2=14 1..0=3
+# 
+# vins  rd rs1 rs2 31..25=0 14..12=0 6..2=2 1..0=3
+# vfins rd rs1 rs2 31..25=0 14..12=1 6..2=2 1..0=3
+# vext  rd rs1 rs2 31..25=0 14..12=2 6..2=2 1..0=3
+# vfext rd rs1 rs2 31..25=0 14..12=3 6..2=2 1..0=3
 
 # P vector SIMD extension (Proposal by andes)
 
@@ -548,5 +600,5 @@ smslxda rd rs1 rs2  31..25=27 14..12=3 6..2=0xa 1..0=3
 
 ## Zero-overhead loop Mechanism Instruction	
 
-mtlbi imm16 31=0 14..12=5 6..2=0xa 1..0=3
-mtlei imm16 31=1 14..12=5 6..2=0xa 1..0=3
+mtlbi imm16 31=0 14..12=5 11..7=0 6..2=0xa 1..0=3
+mtlei imm16 31=1 14..12=5 11..7=0 6..2=0xa 1..0=3
