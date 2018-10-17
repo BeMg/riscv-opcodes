@@ -245,7 +245,12 @@ fnmadd.q  rd rs1 rs2 rs3 rm 26..25=3 6..2=0x13 1..0=3
 
 # Vector EXTENSIONS
 
+
+vlh rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=5 6..2=1 1..0=3
+vlw rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=6 6..2=1 1..0=3 
 vld rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=7 6..2=1 1..0=3
+vsh imm3st rs1 maskls rs3 24..20=0 14..12=5 8..7=0 6..2=9 1..0=3 
+vsw imm3st rs1 maskls rs3 24..20=0 14..12=6 8..7=0 6..2=9 1..0=3 
 vsd imm3st rs1 maskls rs3 24..20=0 14..12=7 8..7=0 6..2=9 1..0=3 
 
 vadd rd mask rs1 rs2 31..25=0x40 14=1 6..2=0x15 1..0=3  
