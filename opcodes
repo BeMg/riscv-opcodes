@@ -246,14 +246,22 @@ fnmadd.q  rd rs1 rs2 rs3 rm 26..25=3 6..2=0x13 1..0=3
 # Vector EXTENSIONS
 
 
-vlh rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=5 6..2=1 1..0=3
-vlw rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=6 6..2=1 1..0=3 
-vld rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=7 6..2=1 1..0=3
-vsh imm3st rs1 maskls rs3 24..20=0 14..12=5 8..7=0 6..2=9 1..0=3 
-vsw imm3st rs1 maskls rs3 24..20=0 14..12=6 8..7=0 6..2=9 1..0=3 
-vsd imm3st rs1 maskls rs3 24..20=0 14..12=7 8..7=0 6..2=9 1..0=3 
+## vlh rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=5 6..2=1 1..0=3
+## vlw rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=6 6..2=1 1..0=3
+## vld rd rs1 maskls imm3ld 28..27=0 24..20=0 14..12=7 6..2=1 1..0=3
+## vsh imm3st rs1 maskls rs3 24..20=0 14..12=5 8..7=0 6..2=9 1..0=3 
+## vsw imm3st rs1 maskls rs3 24..20=0 14..12=6 8..7=0 6..2=9 1..0=3 
+## vsd imm3st rs1 maskls rs3 24..20=0 14..12=7 8..7=0 6..2=9 1..0=3 
 
-vadd rd mask rs1 rs2 31..25=0x40 14=1 6..2=0x15 1..0=3  
+# Handle imm3 -> imm12 now
+vlh rd rs1 imm12 14..12=0 6..2=10 1..0=3
+vlw rd rs1 imm12 14..12=1 6..2=10 1..0=3
+vld rd rs1 imm12 14..12=2 6..2=10 1..0=3
+vsh rd rs1 imm12 14..12=3 6..2=10 1..0=3 
+vsw rd rs1 imm12 14..12=4 6..2=10 1..0=3 
+vsd rd rs1 imm12 14..12=5 6..2=10 1..0=3 
+
+vadd rd mask rs1 rs2 31..25=0x40 14=1 6..2=0x15 1..0=3
 vsub rd mask rs1 rs2 31..25=0x41 14=1 6..2=0x15 1..0=3 
 vsl  rd mask rs1 rs2 31..25=0x48 14=1 6..2=0x15 1..0=3 
 vsr  rd mask rs1 rs2 31..25=0x49 14=1 6..2=0x15 1..0=3 
@@ -401,6 +409,10 @@ kslli16   rd rs1 imm5 31..25=5 14..12=4 6..2=0xa 1..0=3
 kslra16   rd rs1 rs2 31..25=26 14..12=0 6..2=0xa 1..0=3
 kslra16.u rd rs1 rs2 31..25=27 14..12=0 6..2=0xa 1..0=3
 
+## 8-bits Shift instruction
+
+ksll8    rd rs1 rs2 31..25=28 14..12=1 6..2=0xa 1..0=3
+
 ## 16-bits Compare Instruction
 
 cmpeq16  rd rs1 rs2 31..25=28 14..12=0 6..2=0xa 1..0=3
@@ -425,6 +437,7 @@ smax16  rd rs1 rs2 31..25=35 14..12=0 6..2=0xa 1..0=3
 umax16  rd rs1 rs2 31..25=36 14..12=0 6..2=0xa 1..0=3
 sclip16 rd rs1 imm5 31..25=6  14..12=4 6..2=0xa 1..0=3
 uclip16 rd rs1 imm5 31..25=7  14..12=4 6..2=0xa 1..0=3
+khm8    rd rs1 rs2 31..25=48 14..12=0 6..2=0xa 1..0=3
 khm16   rd rs1 rs2 31..25=37 14..12=0 6..2=0xa 1..0=3
 khmx16  rd rs1 rs2 31..25=38 14..12=0 6..2=0xa 1..0=3
 smul16  rd rs1 rs2 31..25=39 14..12=0 6..2=0xa 1..0=3
@@ -607,3 +620,10 @@ smslxda rd rs1 rs2  31..25=27 14..12=3 6..2=0xa 1..0=3
 
 mtlbi imm16 31=0 14..12=5 11..7=0 6..2=0xa 1..0=3
 mtlei imm16 31=1 14..12=5 11..7=0 6..2=0xa 1..0=3
+
+## Matrix mul Instruction
+
+## Set width and length, then mul
+
+setmat rd rs1 rs2 31..25=1 14..12=6 6..2=2 1..0=3
+matmul rd rs1 rs2 31..25=2 14..12=6 6..2=2 1..0=3
