@@ -396,6 +396,16 @@ vredand.v     vd vs1 vs2 vm 31..27=0b01111 14..12=0 6..2=0b10101 1..0=3
 vredor.v      vd vs1 vs2 vm 31..27=0b01111 14..12=1 6..2=0b10101 1..0=3
 vredxor.v     vd vs1 vs2 vm 31..27=0b01111 14..12=2 6..2=0b10101 1..0=3
 
+vmadd.vvv     vd vs1 vs2 vm vs3 14..12=5 6..2=0b10000 1..0=3
+vmadd.vvs     vd vs1 vs2 vm vs3 14..12=6 6..2=0b10000 1..0=3
+vmsub.vvv     vd vs1 vs2 vm vs3 14..12=5 6..2=0b10001 1..0=3
+vmsub.vvs     vd vs1 vs2 vm vs3 14..12=6 6..2=0b10001 1..0=3
+vmaddw.vvv    vd vs1 vs2 vm vs3 14..12=5 6..2=0b10010 1..0=3
+vmaddw.vvs    vd vs1 vs2 vm vs3 14..12=6 6..2=0b10010 1..0=3
+vmsubw.vvv    vd vs1 vs2 vm vs3 14..12=5 6..2=0b10011 1..0=3
+vmsubw.vvs    vd vs1 vs2 vm vs3 14..12=6 6..2=0b10011 1..0=3
+
+
 vconfig imm12 19..15=0 14..12=4 11..7=0 6..2=2 1..0=3
 vsetvl rd rs1 31..20=0 14..12=5    6..2=2 1..0=3
 
